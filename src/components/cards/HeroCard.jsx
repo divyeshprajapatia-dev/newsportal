@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 function HeroCard({ article}) {
   const navigate = useNavigate();
 
+  if (!article) return null; 
+
   return (
     <div
       onClick={() =>

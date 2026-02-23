@@ -88,7 +88,7 @@ function Home() {
         </div>
 
         <div className="md:col-span-4 bg-gray-50 p-6 space-y-6">
-          <h3 className="text-lg font-semibold">Headlines</h3>
+          <h3 className="text-3xl font-semibold">Headlines</h3>
             <div className="space-y-1 border-b pb-4 last:border-none">
               {headlineArticles.map((article, index) => (
                 <HeadlineCard
