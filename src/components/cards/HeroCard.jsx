@@ -1,7 +1,7 @@
 function HeroCard({image, title, time}) {
     return (  
         <div className="relative overflow-hidden">
-            <img src={image} alt={title} className="w-full h-[400px] md:h-[450px] object-cover" />
+            <img src={image} alt={title} className="w-full h-100 md:h-112.5 object-cover" />
 
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
 

@@ -145,7 +145,7 @@ function Home() {
         </div>
       </section>
       <section className="py-10">
-        <h3 className="text-lg font-semibold mb-6 flex justify-center items-center"><button onClick={loadMore} className="border-1 p-2 hover:resize cursor-pointer">More News</button></h3>
+        <h3 className="text-lg font-semibold mb-6 flex justify-center items-center"><button onClick={loadMore} className="border p-2 hover:resize cursor-pointer">More News</button></h3>
 
         {more && <div className="space-y-8">
           {extraArticles.map((article) => (
