@@ -9,7 +9,6 @@ const fetchNews = async (url) => {
   }
 
   const data = await response.json()
-  console.log(data)
   return data.articles
 }
 

@@ -19,7 +19,7 @@ function Home() {
 
 
   const safeArticles = articles.filter(a => a.urlToImage)
-  console.log(safeArticles.length)
+  console.log(safeArticles[0])
 
   const heroArticle = safeArticles[0]
 
@@ -83,9 +83,7 @@ function Home() {
       <section className="grid grid-cols-1 md:grid-cols-12 gap-8 py-8">
         <div className="md:col-span-8">
           <HeroCard
-            image={heroArticle?.urlToImage}
-            title={heroArticle?.title}
-            time={heroArticle?.publishedAt}
+            article={heroArticle}
           />
         </div>
 
@@ -95,8 +93,7 @@ function Home() {
               {headlineArticles.map((article, index) => (
                 <HeadlineCard
                   key={index}
-                  category={article.source.name}
-                  title={article.title}
+                  article={article}
                 />
               ))}
             </div>
@@ -112,9 +109,8 @@ function Home() {
             <div className="md:col-span-5">
             {latestMain.map((article,index)=>(
               <NewsCard
-                image={article.urlToImage || "https://via.placeholder.com/400"}
-                title={article.title}
-                description={article.description}
+                key={index}
+                article={article}
               />
             ))}
             </div>
@@ -125,9 +121,8 @@ function Home() {
                 {latestSide.map((article, index) => (
                   <NewsCard
                     key={index}
+                    article={article}
                     variant="horizontal"
-                    image={article.urlToImage || "https://via.placeholder.com/100"}
-                    title={article.title}
                   />
                 ))}
               </div>
@@ -143,8 +138,7 @@ function Home() {
             {mostlyViewed.map((article, index) => (
               <SidebarCard
                 key={index}
-                image={article.urlToImage || "https://via.placeholder.com/300"}
-                title={article.title}
+                article={article}
               />
             ))}
           </div>
