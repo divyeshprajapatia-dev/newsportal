@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 function HeadlinesCard({ article }) {
   const navigate = useNavigate();
 
-  if (!article) return null; // IMPORTANT
-
   return (
     <div
       onClick={() =>

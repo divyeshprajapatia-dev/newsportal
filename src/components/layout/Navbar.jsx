@@ -23,18 +23,6 @@ function Navbar() {
     const navigate = useNavigate()
     const { categoryName } = useParams()
 
-    // useEffect(() => {
-    //     setSearch("")
-    // }, [categoryName])
-
-    // const handleCategoryClick = (category) => {
-    //     if (category === "Home") {
-    //         navigate("/")
-    //     } else {
-    //         navigate(`/category/${category}`)
-    //     }
-    // }
-
 
     return (
          <nav className="border-b border-gray-100 py-4">

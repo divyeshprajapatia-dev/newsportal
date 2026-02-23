@@ -1,9 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 function NewsCard({ article, variant = "vertical" }) {
-  const navigate = useNavigate();
-
-  if (!article) return null; // IMPORTANT
+  const navigate = useNavigate()
 
   if (variant === "horizontal") {
     return (
