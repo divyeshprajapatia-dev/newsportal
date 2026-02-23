@@ -14,7 +14,10 @@ function Home() {
   const [articles, setArticles] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
-  const [more, setMore] = useState(false)
+  const [showMore, setShowMore] = useState(false)
+  const [visibleCount, setVisibleCount] = useState(5)
+
+
   const safeArticles = articles.filter(a => a.urlToImage)
   console.log(safeArticles.length)
 
@@ -62,6 +65,9 @@ function Home() {
     }
 
     loadNews()
+
+    setShowMore(false)
+    setVisibleCount(5)
   }, [categoryName, searchQuery])
 
   const loadMore = () => {
@@ -144,19 +150,60 @@ function Home() {
           </div>
         </div>
       </section>
-      <section className="py-10">
-        <h3 className="text-lg font-semibold mb-6 flex justify-center items-center"><button onClick={loadMore} className="border p-2 hover:resize cursor-pointer">More News</button></h3>
+      <section className="py-12 border-t text-center">
 
-        {more && <div className="space-y-8">
-          {extraArticles.map((article) => (
-            <NewsCard
-              key={article.url}
-              image={article.urlToImage || fallback}
-              title={article.title}
-              description={article.description}
-            />
-          ))}
-        </div>}
+        {!showMore && extraArticles.length > 0 && (
+          <button
+            onClick={() => setShowMore(true)}
+            className="px-6 py-2 border border-black text-sm font-medium hover:bg-black hover:text-white transition-colors"
+          >
+            Load More News
+          </button>
+        )}
+
+        {showMore && (
+          <div className="mt-10 space-y-10 max-w-3xl mx-auto">
+
+            {extraArticles.slice(0, visibleCount).map((article, index) => (
+              <div key={index} className="space-y-4">
+
+                <img
+                  src={article.urlToImage || "https://via.placeholder.com/800x400"}
+                  alt={article.title}
+                  className="w-full h-[260px] object-cover"
+                />
+
+                <div>
+                  <p className="text-xs text-gray-500">
+                    {article.source.name}
+                  </p>
+
+                  <h4 className="text-lg font-semibold mt-2 leading-snug">
+                    {article.title}
+                  </h4>
+
+                  <p className="text-sm text-gray-600 mt-2">
+                    {article.description}
+                  </p>
+                </div>
+
+              </div>
+            ))}
+
+            {visibleCount < extraArticles.length && (
+              <div className="text-center">
+                <button
+                  onClick={() => setVisibleCount((prev) => prev + 5)}
+                  className="px-6 py-2 border border-black text-sm font-medium hover:bg-black hover:text-white transition-colors"
+                >
+                  Load More
+                </button>
+              </div>
+            )}
+
+          </div>
+        )}
+
       </section>
     </div>
   );
